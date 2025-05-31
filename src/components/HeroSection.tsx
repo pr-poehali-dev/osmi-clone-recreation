@@ -1,9 +1,59 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useState, useEffect, useRef } from "react";
 
 const HeroSection = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (heroRef.current) {
+        const rect = heroRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        });
+      }
+    };
+
+    const handleMouseEnter = () => setIsHovering(true);
+    const handleMouseLeave = () => setIsHovering(false);
+
+    const heroElement = heroRef.current;
+    if (heroElement) {
+      heroElement.addEventListener("mousemove", handleMouseMove);
+      heroElement.addEventListener("mouseenter", handleMouseEnter);
+      heroElement.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      if (heroElement) {
+        heroElement.removeEventListener("mousemove", handleMouseMove);
+        heroElement.removeEventListener("mouseenter", handleMouseEnter);
+        heroElement.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-osmi-dark via-osmi-darker to-osmi-dark">
+    <section
+      ref={heroRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-osmi-dark via-osmi-darker to-osmi-dark cursor-none"
+    >
+      {/* Cursor follower */}
+      {isHovering && (
+        <div
+          className="absolute pointer-events-none z-50 w-8 h-8 border-4 rounded-full transition-all duration-75 ease-out"
+          style={{
+            left: mousePosition.x - 16,
+            top: mousePosition.y - 16,
+            borderColor: "#ff4978",
+            boxShadow: "0 0 20px #ff4978, 0 0 40px #ff4978",
+          }}
+        />
+      )}
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-osmi-accent/20 rounded-full blur-3xl animate-pulse"></div>

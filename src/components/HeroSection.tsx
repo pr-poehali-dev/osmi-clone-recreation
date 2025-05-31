@@ -70,7 +70,7 @@ const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden cursor-none bg-slate-900"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden cursor-none bg-slate-900 p-5"
     >
       {/* Trail effect */}
       {isHovering && trailPoints.length > 1 && (
@@ -131,7 +131,7 @@ const HeroSection = () => {
 
       {/* Main content */}
       <div className="relative z-10 text-center px-4">
-        <h1 className="text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[20rem] font-black text-white leading-none tracking-tight font-montserrat">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-none tracking-tight font-montserrat">
           СОЗДАЕМ
           <br />
           <span className="bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">

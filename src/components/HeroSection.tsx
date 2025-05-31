@@ -6,18 +6,16 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-osmi-dark via-osmi-darker to-osmi-dark">
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-osmi-pink/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-osmi-orange/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-osmi-coral/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-osmi-accent/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-osmi-accent/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-osmi-accent/10 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-montserrat">
             Разработка
-            <span className="block bg-gradient-to-r from-osmi-pink to-osmi-orange bg-clip-text text-transparent">
-              IT решений
-            </span>
+            <span className="block text-osmi-accent">IT решений</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -28,7 +26,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-osmi-pink to-osmi-orange hover:from-osmi-pink/90 hover:to-osmi-orange/90 text-white px-8 py-3"
+              className="bg-osmi-accent hover:bg-osmi-accent/90 text-white px-8 py-3"
             >
               <Icon name="Rocket" className="mr-2" />
               Начать проект
@@ -36,7 +34,7 @@ const HeroSection = () => {
             <Button
               variant="outline"
               size="lg"
-              className="border-osmi-pink text-osmi-pink hover:bg-osmi-pink hover:text-white px-8 py-3"
+              className="border-osmi-accent text-osmi-accent hover:bg-osmi-accent hover:text-white px-8 py-3"
             >
               <Icon name="PlayCircle" className="mr-2" />
               Смотреть демо
@@ -67,7 +65,7 @@ const HeroSection = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <Icon name="ChevronDown" size={32} className="text-osmi-pink" />
+        <Icon name="ChevronDown" size={32} className="text-osmi-accent" />
       </div>
     </section>
   );

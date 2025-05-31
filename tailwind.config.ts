@@ -58,10 +58,7 @@ export default {
         },
         // OSMI-IT цветовая палитра
         osmi: {
-          pink: "#ff4081",
-          orange: "#ff6b35",
-          coral: "#f7931e",
-          purple: "#9333ea",
+          accent: "#ff4978",
           dark: "#1a1a2e",
           darker: "#16213e",
         },

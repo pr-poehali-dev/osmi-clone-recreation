@@ -54,10 +54,10 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="bg-osmi-dark/50 border-osmi-pink/20 hover:bg-osmi-dark/70 transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+              className="bg-osmi-dark/50 border-osmi-accent/20 hover:bg-osmi-dark/70 transition-all duration-300 hover:scale-105 backdrop-blur-sm"
             >
               <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-osmi-pink to-osmi-orange rounded-full w-fit">
+                <div className="mx-auto mb-4 p-3 bg-osmi-accent rounded-full w-fit">
                   <Icon
                     name={service.icon as any}
                     size={32}
@@ -76,7 +76,7 @@ const ServicesSection = () => {
                   {service.features.map((feature, idx) => (
                     <span
                       key={idx}
-                      className="text-xs px-2 py-1 bg-osmi-pink/20 text-osmi-pink rounded-full"
+                      className="text-xs px-2 py-1 bg-osmi-accent/20 text-osmi-accent rounded-full"
                     >
                       {feature}
                     </span>

@@ -7,7 +7,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-osmi-pink to-osmi-orange">
+    <section className="py-20 bg-osmi-accent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (

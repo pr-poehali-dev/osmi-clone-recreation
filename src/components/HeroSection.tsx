@@ -152,14 +152,6 @@ const HeroSection = () => {
               <Icon name="Rocket" className="mr-2" />
               Начать проект
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-osmi-accent text-osmi-accent hover:bg-osmi-accent hover:text-white px-8 py-3"
-            >
-              <Icon name="PlayCircle" className="mr-2" />
-              Смотреть демо
-            </Button>
           </div>
         </div>
       </div>

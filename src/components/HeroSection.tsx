@@ -70,7 +70,7 @@ const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden cursor-none"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden cursor-none bg-slate-900"
     >
       {/* Trail effect */}
       {isHovering && trailPoints.length > 1 && (
@@ -103,7 +103,6 @@ const HeroSection = () => {
               opacity: Math.min(trailPoints.length / 10, 1),
             }}
           />
-          {/* Точки на линии для дополнительного эффекта */}
           {trailPoints.map((point, index) => {
             const age = Date.now() - point.timestamp;
             const opacity = Math.max(0, 1 - age / 800);
@@ -125,40 +124,22 @@ const HeroSection = () => {
           })}
         </svg>
       )}
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-osmi-accent/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-osmi-accent/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-osmi-accent/10 rounded-full blur-2xl animate-pulse delay-500"></div>
-      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-montserrat">
-            Разработка
-            <span className="block text-osmi-accent">IT решений</span>
-          </h1>
+      {/* Floating gradient orbs */}
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-500 to-red-500 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+      <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-20 animate-pulse delay-1000"></div>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Создаем современные веб-приложения, мобильные решения и
-            автоматизируем бизнес-процессы
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button
-              size="lg"
-              className="bg-osmi-accent hover:bg-osmi-accent/90 text-white px-8 py-3"
-            >
-              <Icon name="Rocket" className="mr-2" />
-              Начать проект
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <Icon name="ChevronDown" size={32} className="text-osmi-accent" />
+      {/* Main content */}
+      <div className="relative z-10 text-center px-4">
+        <h1 className="text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[20rem] font-black text-white leading-none tracking-tight font-montserrat">
+          СОЗДАЕМ
+          <br />
+          <span className="bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+            WEB И AI
+          </span>
+          <br />
+          ПРОДУКТЫ
+        </h1>
       </div>
     </section>
   );

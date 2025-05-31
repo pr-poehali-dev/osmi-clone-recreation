@@ -70,7 +70,7 @@ const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-osmi-dark via-osmi-darker to-osmi-dark cursor-none"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-osmi-dark cursor-none"
     >
       {/* Trail effect */}
       {isHovering && trailPoints.length > 1 && (

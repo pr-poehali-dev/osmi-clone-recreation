@@ -3,23 +3,32 @@ import Icon from "@/components/ui/icon";
 import { useState, useEffect, useRef } from "react";
 
 const HeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [trailPoints, setTrailPoints] = useState<
+    { x: number; y: number; timestamp: number }[]
+  >([]);
   const [isHovering, setIsHovering] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
+  const animationRef = useRef<number>();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (heroRef.current) {
         const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
+        const newPoint = {
           x: e.clientX - rect.left,
           y: e.clientY - rect.top,
-        });
+          timestamp: Date.now(),
+        };
+
+        setTrailPoints((prev) => [...prev.slice(-15), newPoint]);
       }
     };
 
     const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
+    const handleMouseLeave = () => {
+      setIsHovering(false);
+      setTrailPoints([]);
+    };
 
     const heroElement = heroRef.current;
     if (heroElement) {
@@ -37,22 +46,84 @@ const HeroSection = () => {
     };
   }, []);
 
+  // Анимация затухания точек
+  useEffect(() => {
+    const animate = () => {
+      const now = Date.now();
+      setTrailPoints((prev) =>
+        prev.filter((point) => now - point.timestamp < 800),
+      );
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    if (isHovering) {
+      animationRef.current = requestAnimationFrame(animate);
+    }
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [isHovering]);
+
   return (
     <section
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-osmi-dark via-osmi-darker to-osmi-dark cursor-none"
     >
-      {/* Cursor follower */}
-      {isHovering && (
-        <div
-          className="absolute pointer-events-none z-50 w-8 h-8 border-4 rounded-full transition-all duration-75 ease-out"
-          style={{
-            left: mousePosition.x - 16,
-            top: mousePosition.y - 16,
-            borderColor: "#ff4978",
-            boxShadow: "0 0 20px #ff4978, 0 0 40px #ff4978",
-          }}
-        />
+      {/* Trail effect */}
+      {isHovering && trailPoints.length > 1 && (
+        <svg
+          className="absolute inset-0 pointer-events-none z-50"
+          style={{ width: "100%", height: "100%" }}
+        >
+          <defs>
+            <linearGradient
+              id="trailGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stopColor="#ff4978" stopOpacity="0" />
+              <stop offset="100%" stopColor="#ff4978" stopOpacity="1" />
+            </linearGradient>
+          </defs>
+          <path
+            d={`M ${trailPoints.map((point) => `${point.x},${point.y}`).join(" L ")}`}
+            stroke="url(#trailGradient)"
+            strokeWidth="3"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{
+              filter:
+                "drop-shadow(0 0 8px #ff4978) drop-shadow(0 0 16px #ff4978)",
+              opacity: Math.min(trailPoints.length / 10, 1),
+            }}
+          />
+          {/* Точки на линии для дополнительного эффекта */}
+          {trailPoints.map((point, index) => {
+            const age = Date.now() - point.timestamp;
+            const opacity = Math.max(0, 1 - age / 800);
+            const size = 2 + opacity * 3;
+
+            return (
+              <circle
+                key={index}
+                cx={point.x}
+                cy={point.y}
+                r={size}
+                fill="#ff4978"
+                style={{
+                  opacity: opacity * 0.8,
+                  filter: `blur(${(1 - opacity) * 2}px)`,
+                }}
+              />
+            );
+          })}
+        </svg>
       )}
       {/* Animated background elements */}
       <div className="absolute inset-0">

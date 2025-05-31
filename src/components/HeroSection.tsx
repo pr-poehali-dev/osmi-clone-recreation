@@ -132,13 +132,9 @@ const HeroSection = () => {
       {/* Main content */}
       <div className="relative z-10 text-center px-4">
         <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-none tracking-tight font-montserrat">
-          СОЗДАЕМ
+          РАЗРАБОТКА
           <br />
-          <span className="bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
-            WEB И AI
-          </span>
-          <br />
-          ПРОДУКТЫ
+          <span className="text-white">IT РЕШЕНИЙ</span>
         </h1>
       </div>
     </section>

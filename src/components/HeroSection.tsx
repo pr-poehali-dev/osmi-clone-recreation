@@ -161,25 +161,6 @@ const HeroSection = () => {
               Смотреть демо
             </Button>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
-            <div className="flex flex-col items-center space-y-2 text-gray-300">
-              <Icon name="Globe" size={32} className="text-osmi-accent" />
-              <span className="text-sm">Веб-разработка</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2 text-gray-300">
-              <Icon name="Smartphone" size={32} className="text-osmi-accent" />
-              <span className="text-sm">Мобильные приложения</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2 text-gray-300">
-              <Icon name="Cloud" size={32} className="text-osmi-accent" />
-              <span className="text-sm">Облачные решения</span>
-            </div>
-            <div className="flex flex-col items-center space-y-2 text-gray-300">
-              <Icon name="Settings" size={32} className="text-osmi-accent" />
-              <span className="text-sm">Автоматизация</span>
-            </div>
-          </div>
         </div>
       </div>
 

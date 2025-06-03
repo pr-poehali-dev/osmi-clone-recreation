@@ -7,7 +7,7 @@ const StatsSection = () => {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-gradient-to-r from-blue-900 to-cyan-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (
@@ -15,7 +15,7 @@ const StatsSection = () => {
               <div className="text-4xl md:text-5xl font-bold text-white mb-2 font-montserrat">
                 {stat.number}
               </div>
-              <div className="text-white/90">{stat.label}</div>
+              <div className="text-cyan-200">{stat.label}</div>
             </div>
           ))}
         </div>

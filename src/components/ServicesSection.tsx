@@ -39,7 +39,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20">
+    <section id="services" className="py-20 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-montserrat">
@@ -54,10 +54,10 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="bg-osmi-dark/50 border-osmi-accent/20 hover:bg-osmi-dark/70 transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+              className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300 hover:scale-105 backdrop-blur-sm"
             >
               <CardHeader className="text-center">
-                <div className="mx-auto mb-4 p-3 bg-osmi-accent rounded-full w-fit">
+                <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full w-fit">
                   <Icon
                     name={service.icon as any}
                     size={32}
@@ -76,7 +76,7 @@ const ServicesSection = () => {
                   {service.features.map((feature, idx) => (
                     <span
                       key={idx}
-                      className="text-xs px-2 py-1 bg-osmi-accent/20 text-osmi-accent rounded-full"
+                      className="text-xs px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded-full"
                     >
                       {feature}
                     </span>

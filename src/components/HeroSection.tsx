@@ -1,158 +1,64 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
-import { useState, useEffect, useRef } from "react";
 
 const HeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const heroRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: (e.clientX - rect.left) / rect.width,
-          y: (e.clientY - rect.top) / rect.height,
-        });
-      }
-    };
-
-    const heroElement = heroRef.current;
-    if (heroElement) {
-      heroElement.addEventListener("mousemove", handleMouseMove);
-    }
-
-    return () => {
-      if (heroElement) {
-        heroElement.removeEventListener("mousemove", handleMouseMove);
-      }
-    };
-  }, []);
-
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"
-    >
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
       {/* Animated background elements */}
       <div className="absolute inset-0">
-        {/* Main gradient orbs */}
-        <div
-          className="absolute w-96 h-96 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-full blur-3xl"
-          style={{
-            top: `${20 + mousePosition.y * 10}%`,
-            right: `${20 + mousePosition.x * 10}%`,
-            transform: `translate(${mousePosition.x * 50}px, ${mousePosition.y * 50}px)`,
-            transition: "transform 0.3s ease-out",
-          }}
-        />
-        <div
-          className="absolute w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl"
-          style={{
-            bottom: `${30 + mousePosition.y * -5}%`,
-            left: `${15 + mousePosition.x * -5}%`,
-            transform: `translate(${mousePosition.x * -30}px, ${mousePosition.y * -30}px)`,
-            transition: "transform 0.3s ease-out",
-          }}
-        />
-
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: "50px 50px",
-        }}
-      />
-
-      {/* Main content */}
-      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-        <div className="space-y-8">
-          {/* Main heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white leading-none tracking-tight font-montserrat">
-            <span className="inline-block animate-fade-in">РАЗРАБОТКА</span>
-            <br />
-            <span
-              className="inline-block bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              IT РЕШЕНИЙ
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-montserrat">
+            Разработка
+            <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              IT решений
             </span>
           </h1>
 
-          {/* Subtitle */}
-          <p
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in"
-            style={{ animationDelay: "0.4s" }}
-          >
-            Создаем инновационные цифровые продукты, которые трансформируют ваш
-            бизнес
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Создаем современные веб-приложения, мобильные решения и
+            автоматизируем бизнес-процессы
           </p>
 
-          {/* CTA Buttons */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in"
-            style={{ animationDelay: "0.6s" }}
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white border-0 px-8 py-4 text-lg font-semibold shadow-2xl shadow-pink-500/25 hover:shadow-pink-500/40 transition-all duration-300 hover:scale-105"
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-3"
             >
+              <Icon name="Rocket" className="mr-2" />
               Начать проект
-              <Icon name="ArrowRight" className="ml-2" size={20} />
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-2 border-white/20 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105"
+              className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 px-8 py-3"
             >
-              Портфолио
-              <Icon name="ExternalLink" className="ml-2" size={20} />
+              <Icon name="PlayCircle" className="mr-2" />
+              Смотреть демо
             </Button>
           </div>
 
-          {/* Stats preview */}
-          <div
-            className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto animate-fade-in"
-            style={{ animationDelay: "0.8s" }}
-          >
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
-                150+
-              </div>
-              <div className="text-sm text-gray-400">Проектов</div>
+          {/* Tech stack icons */}
+          <div className="flex justify-center items-center space-x-8 text-gray-400">
+            <div className="flex flex-col items-center">
+              <Icon name="Code" size={32} className="mb-2" />
+              <span className="text-sm">React</span>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
-                5+
-              </div>
-              <div className="text-sm text-gray-400">Лет опыта</div>
+            <div className="flex flex-col items-center">
+              <Icon name="Database" size={32} className="mb-2" />
+              <span className="text-sm">Node.js</span>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
-                24/7
-              </div>
-              <div className="text-sm text-gray-400">Поддержка</div>
+            <div className="flex flex-col items-center">
+              <Icon name="Smartphone" size={32} className="mb-2" />
+              <span className="text-sm">Mobile</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Icon name="Cloud" size={32} className="mb-2" />
+              <span className="text-sm">Cloud</span>
             </div>
           </div>
         </div>
@@ -160,7 +66,7 @@ const HeroSection = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <Icon name="ChevronDown" className="text-white/60" size={32} />
+        <Icon name="ChevronDown" size={32} className="text-cyan-400" />
       </div>
     </section>
   );

@@ -161,6 +161,26 @@ const HeroSection = () => {
               Смотреть демо
             </Button>
           </div>
+
+          {/* Tech stack icons */}
+          <div className="flex justify-center items-center space-x-8 text-gray-400">
+            <div className="flex flex-col items-center">
+              <Icon name="Code" size={32} className="mb-2" />
+              <span className="text-sm">React</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Icon name="Database" size={32} className="mb-2" />
+              <span className="text-sm">Node.js</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Icon name="Smartphone" size={32} className="mb-2" />
+              <span className="text-sm">Mobile</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Icon name="Cloud" size={32} className="mb-2" />
+              <span className="text-sm">Cloud</span>
+            </div>
+          </div>
         </div>
       </div>
 

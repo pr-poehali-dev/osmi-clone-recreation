@@ -3,12 +3,12 @@ import Icon from "@/components/ui/icon";
 
 const Navigation = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-osmi-dark/90 backdrop-blur-sm border-b border-osmi-accent/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
             <div className="text-2xl font-bold text-white">OSMI</div>
-            <div className="text-cyan-400">IT</div>
+            <div className="text-osmi-accent">IT</div>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -41,7 +41,7 @@ const Navigation = () => {
           <div className="flex items-center space-x-4">
             <Button
               variant="outline"
-              className="hidden sm:inline-flex border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900"
+              className="hidden sm:inline-flex border-osmi-accent text-osmi-accent hover:bg-osmi-accent hover:text-white"
             >
               Связаться
             </Button>

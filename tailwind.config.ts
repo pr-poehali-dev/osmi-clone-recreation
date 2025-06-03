@@ -56,6 +56,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // OSMI-IT цветовая палитра
+        osmi: {
+          accent: "#ff4978",
+          dark: "#1a1a2e",
+          darker: "#16213e",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -125,6 +125,31 @@ const HeroSection = () => {
           })}
         </svg>
       )}
+
+      {/* Interactive dots animation */}
+      {showDots && (
+        <svg className="absolute inset-0 w-full h-full pointer-events-none">
+          {animatedDots.map((point, index) => {
+            const opacity = Math.max(0, Math.min(1, point.life / 60));
+            const size = 2 + opacity * 3;
+
+            return (
+              <circle
+                key={index}
+                cx={point.x}
+                cy={point.y}
+                r={size}
+                fill="#ff4978"
+                style={{
+                  opacity: opacity * 0.8,
+                  filter: `blur(${(1 - opacity) * 2}px)`,
+                }}
+              />
+            );
+          })}
+        </svg>
+      )}
+
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-osmi-accent/20 rounded-full blur-3xl animate-pulse"></div>
